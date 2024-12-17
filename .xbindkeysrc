@@ -1,0 +1,16 @@
+#Pagedown press 8
+"xte 'keydown End'"
+    b:8
+
+#Pagedown release 8
+"xte 'keyup End'"
+    b:8 + Release
+
+#PageUp press 9
+"xte 'keydown Home'"
+    b:9
+
+#PageUp release 9
+"xte 'keyup Home'"
+    b:9 + Release
+

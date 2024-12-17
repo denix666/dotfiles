@@ -1,0 +1,84 @@
+{
+  "language_models": {
+    "open_ai": {}
+  },
+  "use_autoclose": false,
+  "vim_mode": false,
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "default_open_ai_model": "gpt-3.5-turbo",
+    "version": "2",
+    "provider": null
+  },
+  "language": {
+    "java": {
+      "show_inline_completions": false,
+      "show_completions_on_input": false
+    }
+  },
+  "theme": "Denix Theme",
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "Fira Code",
+  "buffer_font_features": {
+    "calt": false,
+    "cv01": 7
+  },
+  "soft_wrap": "editor_width",
+  "remove_trailing_whitespace_on_save": true,
+  "current_line_highlight": "all",
+  "ensure_final_newline_on_save": true,
+
+  "format_on_save": "off",
+  "wrap_guides": [0],
+  "auto_update": false,
+  "autosave": "on_focus_change",
+  "terminal": {
+    "font_family": "Fira Code",
+    "dock": "bottom",
+    "blinking": "on"
+  },
+  "show_call_status_icon": true,
+  "cursor_shape": "bar",
+  "scrollbar": {
+    "show": "always",
+    "cursors": true,
+    "git_diff": true,
+    "search_results": true,
+    "selected_symbol": true,
+    "diagnostics": true
+  },
+  "tabs": {
+    "close_position": "right",
+    "activate_on_close": "neighbour",
+    "file_icons": true,
+    "git_status": true
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true
+  },
+  "show_whitespaces": "selection",
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_code_navigation": true
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "file_types": {
+    "ini": ["cfg","conf", "service"],
+    "Shell Script": ["env"],
+    "Elisp": ["yuck"],
+    "Plain Text": ["txt"],
+    "Git Ignore": [".hgignore"]
+  }
+}

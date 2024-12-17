@@ -1,0 +1,7 @@
+[
+  {
+    "label": "cargo build --release",
+    "command": "cargo build --release",
+    "reveal": "always"
+  }
+]

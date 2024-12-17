@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Make sure you are installed the next packages:
+# 1 - uutils-coreutils https://uutils.github.io/
+# 2 - ripgrep https://github.com/BurntSushi/ripgrep
+# 3 - bat https://github.com/sharkdp/bat
+# 4 - btop https://github.com/aristocratos/btop
+# 5 - lsd https://github.com/lsd-rs/lsd
+
+alias pip_update="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+alias av="ansible-vault"
+alias ap="ansible-playbook"
+alias grep="rg -i"
+alias ls="lsd" # or can be eza
+alias gp="git pull"
+alias gpreb="git pull --rebase"
+alias hp="hg pull && hg up"
+alias cat="bat -pp"
+alias top="btop"
+alias cp="uu-cp -ig"                      # confirm before overwriting something
+alias mv="uu-mv -g"
+alias df='uu-df -h'                          # human-readable sizes
+alias free='uu-free -m'                      # show sizes in MB
+alias np='nano -w PKGBUILD'
+alias more=less
+alias du="uu-du"

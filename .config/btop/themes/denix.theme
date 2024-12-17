@@ -1,0 +1,84 @@
+# Denix theme
+# by -=De/\/=-
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#060604"
+
+# Main text color
+theme[main_fg]="#4bfa40"
+
+# Title color for boxes
+theme[title]="#e8ffcd"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#ff641f"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#970c0a"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#F8F8F2"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#595647"
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#5b5b5b"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#85cb4d"
+
+# Cpu box outline color
+theme[cpu_box]="#81664b"
+
+# Memory/disks box outline color
+theme[mem_box]="#81664b"
+
+# Net up/down box outline color
+theme[net_box]="#81664b"
+
+# Processes box outline color
+theme[proc_box]="#81664b"
+
+# Box divider line and small boxes line color
+theme[div_line]="#81664b"
+
+# Temperature graph colors
+theme[temp_start]="#8677de"
+theme[temp_mid]="#d6a298"
+theme[temp_end]="#ec2148"
+
+# CPU graph colors
+theme[cpu_start]="#8677de"
+theme[cpu_mid]="#d6a298"
+theme[cpu_end]="#ec2148"
+
+# Mem/Disk free meter
+theme[free_start]="#8677de"
+theme[free_mid]="#d6a298"
+theme[free_end]="#e2f5bc"
+
+# Mem/Disk cached meter
+theme[cached_start]="#8677de"
+theme[cached_mid]="#d6a298"
+theme[cached_end]="#ec2148"
+
+# Mem/Disk available meter
+theme[available_start]="#8677de"
+theme[available_mid]="#d6a298"
+theme[available_end]="#ec2148"
+
+# Mem/Disk used meter
+theme[used_start]="#8677de"
+theme[used_mid]="#d6a298"
+theme[used_end]="#ec2148"
+
+# Download graph colors
+theme[download_start]="#8677de"
+theme[download_mid]="#d6a298"
+theme[download_end]="#ec2148"
+
+# Upload graph colors
+theme[upload_start]="#8677de"
+theme[upload_mid]="#d6a298"
+theme[upload_end]="#ec2148"

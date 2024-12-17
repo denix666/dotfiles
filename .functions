@@ -1,0 +1,6 @@
+#!/bin/bash
+
+command_not_found_handle () {
+  echo -e "\e[1;31m$0: $1: command not found\e[0;0m"
+  return 127
+}
