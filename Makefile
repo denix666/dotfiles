@@ -1,10 +1,8 @@
 .SILENT:dotfiles
 
-default: dotfiles
-
-all: dotfiles
-
-install: dotfiles
+default: all
+install: all
+all: dotfiles packages
 
 dotfiles:
 	echo -n "Processing dotfiles... "
@@ -14,3 +12,7 @@ dotfiles:
 	if [[ "$$?" -eq 0 ]]; then \
 		echo "done!"; \
 	fi
+
+packages:
+	echo -n "Installing packages... "
+	pamac install uutils-coreutils lsd ripgrep bat btop mc
