@@ -23,11 +23,13 @@ FG_BOLD_PURPLE='\[\e[1;35m\]'
 
 COLOR_OFF='\[\e[0m\]'
 
+# Colorize errored execution
 command_not_found_handle () {
   echo -e "${FG_BOLD_RED}$0: $1: command not found${COLOR_OFF}"
   return 127
 }
 
+# Define prompt
 ds_prompt () {
     if [ $? -eq 0 ]; then
         EXIT_STATUS="${FG_BOLD_GREEN}${SYMBOL_OK}${COLOR_OFF}"
