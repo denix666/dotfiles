@@ -7,20 +7,45 @@
 # 4 - btop https://github.com/aristocratos/btop
 # 5 - lsd https://github.com/lsd-rs/lsd
 
-alias pip_update="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias av="ansible-vault"
-alias ap="ansible-playbook"
-alias grep="rg -i"
-alias ls="lsd" # or can be eza
-alias gp="git pull"
-alias gpreb="git pull --rebase"
-alias hp="hg pull && hg up"
-alias cat="bat -pp"
-alias top="btop"
-alias cp="uu-cp -ig"                      # confirm before overwriting something
-alias mv="uu-mv -g"
-alias df='uu-df -h'                          # human-readable sizes
-alias free='uu-free -m'                      # show sizes in MB
+alias ap='ansible-playbook'
+alias av='ansible-vault'
+alias cat='bat -pp'
+alias cp='uu-cp -ig'
+alias dclean='docker ps -a | grep Exited | awk '\''{print }'\'' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '\''{print }'\'' | xargs -r docker rmi >/dev/null 2>&1'
+alias df='uu-df -h'
+alias di='docker images'
+alias dl='docker logs'
+alias dr='docker rm --force `docker ps -qa`'
+alias drm='docker rm'
+alias ds='docker ps -a'
+alias dstop='docker stop'
+alias du='uu-du'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+alias free='uu-free -m'
+alias g='googler --count 5'
+alias gp='git pull'
+alias gpreb='git pull --rebase'
+alias grep='rg -i'
+alias hp='hg pull && hg up'
+alias jclean='journalctl --vacuum-size=100M'
+alias jf='journalctl -f'
+alias jl='journalctl --since "10 min ago"'
+alias ju='journalctl -u'
+alias lh='ls -lah --color=auto'
+alias ll='ls -la --color=auto'
+alias ls='lsd'
+alias more='less'
+alias mv='uu-mv -g'
 alias np='nano -w PKGBUILD'
-alias more=less
-alias du="uu-du"
+alias pip_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install -U'
+alias pj='ps -ef | grep java'
+alias pn='ping -c4 8.8.8.8'
+alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+alias sdr='systemctl daemon-reload'
+alias sf='systemctl --failed'
+alias sre='systemctl restart'
+alias ss='systemctl status'
+alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+alias tf='tail -f'
+alias top='btop'

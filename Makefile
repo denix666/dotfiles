@@ -4,6 +4,8 @@ default: dotfiles
 
 all: dotfiles
 
+install: dotfiles
+
 dotfiles:
 	echo -n "Processing dotfiles... "
 	for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git"); do \
