@@ -25,7 +25,7 @@ COLOR_OFF='\[\e[0m\]'
 
 # Colorize errored execution
 command_not_found_handle () {
-  echo -e "${FG_BOLD_RED}$0: $1: command not found${COLOR_OFF}"
+  echo -e "\e[1;31m$0: $1: command not found\e[0;0m"
   return 127
 }
 
