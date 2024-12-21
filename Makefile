@@ -15,4 +15,4 @@ dotfiles:
 
 packages:
 	echo -n "Installing packages... "
-	pamac install uutils-coreutils lsd ripgrep bat btop mc
+	pamac install uutils-coreutils lsd ripgrep bat btop mc tmux
