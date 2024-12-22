@@ -1,51 +1,81 @@
 #!/bin/bash
 
-# Make sure you are installed the next packages:
+###################################################################################
+# If you are on arch based distro - make sure you are installed the next packages:
+#
 # 1 - uutils-coreutils https://uutils.github.io/
 # 2 - ripgrep https://github.com/BurntSushi/ripgrep
 # 3 - bat https://github.com/sharkdp/bat
 # 4 - btop https://github.com/aristocratos/btop
 # 5 - lsd https://github.com/lsd-rs/lsd
+###################################################################################
 
-alias ap='ansible-playbook'
-alias av='ansible-vault'
-alias cat='bat -pp'
-alias cp='uu-cp -ig'
-alias dclean='docker ps -a | grep Exited | awk '\''{print }'\'' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '\''{print }'\'' | xargs -r docker rmi >/dev/null 2>&1'
-alias df='uu-df -h'
-alias di='docker images'
-alias dl='docker logs'
-alias dr='docker rm --force `docker ps -qa`'
-alias drm='docker rm'
-alias ds='docker ps -a'
-alias dstop='docker stop'
-alias du='uu-du'
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'
-alias free='uu-free -m'
-alias g='googler --count 5'
-alias gp='git pull'
-alias gpreb='git pull --rebase'
-alias grep='rg -i'
-alias hp='hg pull && hg up'
-alias jclean='journalctl --vacuum-size=100M'
-alias jf='journalctl -f'
-alias jl='journalctl --since "10 min ago"'
-alias ju='journalctl -u'
-alias lh='ls -lah --color=auto'
-alias ll='ls -la --color=auto'
-alias ls='lsd'
-alias more='less'
-alias mv='uu-mv -g'
-alias np='nano -w PKGBUILD'
-alias pip_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install -U'
-alias pj='ps -ef | grep java'
-alias pn='ping -c4 8.8.8.8'
-alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
-alias sdr='systemctl daemon-reload'
-alias sf='systemctl --failed'
-alias sre='systemctl restart'
-alias ss='systemctl status'
-alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
-alias tf='tail -f'
-alias top='btop'
+OS=`cat /etc/os-release 2>/dev/null | grep '^ID=' | tr -d '"' | awk -F'=' '{print $2}'`
+
+common_aliases() {
+    # Ansible
+    alias ap='ansible-playbook'
+    alias av='ansible-vault'
+    # Docker
+    alias dclean='docker ps -a | grep Exited | awk '\''{print }'\'' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '\''{print }'\'' | xargs -r docker rmi >/dev/null 2>&1'
+    alias di='docker images'
+    alias dl='docker logs'
+    alias dr='docker rm --force `docker ps -qa`'
+    alias drm='docker rm'
+    alias ds='docker ps -a'
+    alias dstop='docker stop'
+    # Git
+    alias gp='git pull'
+    alias gpreb='git pull --rebase'
+    # SSH/SCP
+    alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+    alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+    # Python
+    alias pip_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install -U'
+    # Other
+    alias egrep='egrep --colour=auto'
+    alias fgrep='fgrep --colour=auto'
+    alias tf='tail -f'
+    alias more='less'
+    alias pj='ps -ef | grep java'
+    alias pn='ping -c4 8.8.8.8'
+    alias hp='hg pull && hg up'
+    alias sdr='sudo systemctl daemon-reload'
+}
+
+manjaro_aliases() {
+    alias cat='bat -pp'
+    alias cp='uu-cp -ig'
+    alias df='uu-df -h'
+    alias du='uu-du'
+    alias free='uu-free -m'
+    alias grep='rg -i'
+    alias mv='uu-mv -g'
+    alias ls='lsd'
+    alias lh='lsd -lah --color=auto'
+    alias ll='lsd -la --color=auto'
+    alias top='btop'
+    alias np='msedit PKGBUILD'
+}
+
+std_aliases() {
+    alias lh='ls -lah --color=auto'
+    alias ll='ls -l --color=auto'
+    alias ls='ls --color=auto'
+    alias cp='cp -i'
+    alias mv='mv -i'
+    alias free='free -m'
+    alias df='df -h'
+    alias grep='grep --color=auto'
+}
+
+case ${OS} in
+    manjaro | arch)
+        common_aliases
+        manjaro_aliases
+    ;;
+    *)
+        common_aliases
+        std_aliases
+    ;;
+esac
