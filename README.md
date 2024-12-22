@@ -1,23 +1,34 @@
 # dotfiles
-My dotfiles
+My dotfiles. They was tested on arch and rhel based distros.
 
-### Installing
+### To install dotfiles, packages and include them into .bashrc:
 
 ```bash
-$ make dotfiles
+$ make all
 ```
-This will copy all dotfiles from this repo to your home folder.
+This will copy all dotfiles from this repo to your home folder, install all needed packages and include they in your .basrc file.
 
 
 > [!TIP]
-> If your system doesn't load .profile automatically add next line to your .bashrc file:
+> You always can enable or disable that profile with next command:
 
 ```bash
-[[ -f ~/.profile ]] && source ~/.profile
+$ make enabled
+```
+or
+```bash
+$ make disabled
 ```
 
+> [!TIP]
+> To install only dotfiles
+```bash
+$ make dotfiles
+```
+This will only copy all dotfiles from this repo to your home folder.
+
 > [!IMPORTANT]
-> To have all aliases working correct, you should install next packages:
+> To have all aliases working correct on arch based distro, you should install next packages as dependencies:
 ```
 uutils-coreutils - https://uutils.github.io/
 ripgrep - https://github.com/BurntSushi/ripgrep
@@ -25,7 +36,7 @@ bat - https://github.com/sharkdp/bat
 btop - https://github.com/aristocratos/btop
 lsd - https://github.com/lsd-rs/lsd
 ```
-On arch based distros you can execute next command to install them from official repository:
+To install only the packages:
 ```bash
-$ pamac install uutils-coreutils lsd ripgrep bat btop
+$ make packages
 ```
