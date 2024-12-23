@@ -27,6 +27,7 @@ common_aliases() {
     # Git
     alias gp='git pull'
     alias gpreb='git pull --rebase'
+    alias gprec='git pull --recurse-submodules'
     # SSH/SCP
     alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
     alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
@@ -40,7 +41,9 @@ common_aliases() {
     alias pj='ps -ef | grep java'
     alias pn='ping -c4 8.8.8.8'
     alias hp='hg pull && hg up'
+    # Journal
     alias sdr='sudo systemctl daemon-reload'
+    alias jctl="journalctl -p 3 -e"
 }
 
 manjaro_aliases() {
@@ -51,11 +54,12 @@ manjaro_aliases() {
     alias free='uu-free -m'
     alias grep='rg -i'
     alias mv='uu-mv -g'
-    alias ls='lsd'
-    alias lh='lsd -lah --color=auto'
-    alias ll='lsd -la --color=auto'
+    alias ls='lsd -a --color=always --group-directories-first'
+    alias lh='lsd -lah --color=always --group-directories-first'
+    alias ll='lsd -la --color=always --group-directories-first'
+    alias lt='lsd --tree --color=always --group-directories-first'
     alias top='btop'
-    alias np='msedit PKGBUILD'
+    alias mp='msedit PKGBUILD'
 }
 
 std_aliases() {
