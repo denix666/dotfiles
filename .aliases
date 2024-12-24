@@ -66,6 +66,7 @@ std_aliases() {
     alias lh='ls -lah --color=auto'
     alias ll='ls -l --color=auto'
     alias ls='ls --color=auto'
+    alias lt='tree'
     alias cp='cp -i'
     alias mv='mv -i'
     alias free='free -m'
