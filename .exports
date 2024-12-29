@@ -14,4 +14,7 @@ export EDITOR=mcedit
 
 export PROMPT_COMMAND=ds_prompt
 
+export MANROFFOPT='-c'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
