@@ -61,6 +61,7 @@ manjaro_aliases() {
     alias top='btop'
     alias mp='msedit PKGBUILD'
     alias r='rg . | fzf'
+    alias p='fzf --preview "bat --color=always {}"'
 }
 
 std_aliases() {
