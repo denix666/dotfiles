@@ -8,7 +8,6 @@ $ make all
 ```
 This will copy all dotfiles from this repo to your home folder, install all needed packages and include they in your .basrc file.
 
-
 > [!TIP]
 > You always can enable or disable that profile with next command:
 
@@ -35,6 +34,7 @@ ripgrep - https://github.com/BurntSushi/ripgrep
 bat - https://github.com/sharkdp/bat
 btop - https://github.com/aristocratos/btop
 lsd - https://github.com/lsd-rs/lsd
+fzf - https://github.com/junegunn/fzf
 ```
 To install only the packages:
 ```bash

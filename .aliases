@@ -54,12 +54,13 @@ manjaro_aliases() {
     alias free='uu-free -m'
     alias grep='rg -i'
     alias mv='uu-mv -g'
-    alias ls='ls --color=always'
-    alias ll='ls -l --color=always --group-directories-first'
+    alias ls='lsd -N --color=always'
+    alias ll='ls -la --color=always --group-directories-first'
     alias lh='ls -lah --color=always --group-directories-first'
     alias lt='lsd --tree --color=always --group-directories-first'
     alias top='btop'
     alias mp='msedit PKGBUILD'
+    alias r='rg . | fzf'
 }
 
 std_aliases() {

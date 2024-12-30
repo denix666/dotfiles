@@ -9,3 +9,4 @@ XTerm*faceName: Monospace
 XTerm*faceSize: 9
 XTerm*termName: xterm-256color
 Xcursor.size: 10
+URxvt*font:    xft:Hack Nerd Font:style=Regular:size=11

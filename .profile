@@ -1,6 +1,6 @@
-# Load functions, aliases and exports
-#####################################
-for file in ~/.{functions,aliases,exports}; do
+# Load functions, aliases, exports and fzf
+##########################################
+for file in ~/.{functions,aliases,exports,fzf}; do
     if [[ -r "$file" ]] && [[ -f "$file" ]]; then
         source "$file"
     fi
