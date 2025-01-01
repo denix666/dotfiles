@@ -25,31 +25,31 @@ COLOR_OFF='\[\e[0m\]'
 
 # Colorize errored execution
 command_not_found_handle () {
-  echo -e "\e[1;31m$0: $1: command not found\e[0;0m"
-  return 127
+    echo -e "\e[1;31m$0: $1: command not found\e[0;0m"
+    return 127
 }
 
 # Archive extractor
 ex () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1                             ;;
-      *.tar.gz)    tar xzf $1                             ;;
-      *.bz2)       bunzip2 $1                             ;;
-      *.rar)       unrar x $1                             ;;
-      *.gz)        gunzip $1                              ;;
-      *.tar)       tar xf $1                              ;;
-      *.tbz2)      tar xjf $1                             ;;
-      *.tgz)       tar xzf $1                             ;;
-      *.zip)       unzip $1                               ;;
-      *.Z)         uncompress $1                          ;;
-      *.7z)        7z x $1                                ;;
-      *)           echo "'$1' cannot be extracted via ex" ;;
-    esac
-  else
-    echo "Error: '$1' is not a valid file"
-    echo "Usage: ex <archive file name>"
-  fi
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1                             ;;
+            *.tar.gz)    tar xzf $1                             ;;
+            *.bz2)       bunzip2 $1                             ;;
+            *.rar)       unrar x $1                             ;;
+            *.gz)        gunzip $1                              ;;
+            *.tar)       tar xf $1                              ;;
+            *.tbz2)      tar xjf $1                             ;;
+            *.tgz)       tar xzf $1                             ;;
+            *.zip)       unzip $1                               ;;
+            *.Z)         uncompress $1                          ;;
+            *.7z)        7z x $1                                ;;
+            *)           echo "'$1' cannot be extracted via ex" ;;
+        esac
+    else
+        echo "Error: '$1' is not a valid file"
+        echo "Usage: ex <archive file name>"
+    fi
 }
 
 # Remote shell with custom profile
@@ -65,9 +65,9 @@ sshb () {
 tmpd () {
     local dir
     if [ $# -eq 0 ]; then
-	dir=$(mktemp -d)
+        dir=$(mktemp -d)
     else
-	dir=$(mktemp -d -t "${1}.XXXXXXXXXX")
+        dir=$(mktemp -d -t "${1}.XXXXXXXXXX")
     fi
     cd "$dir" || exit
 }
@@ -75,33 +75,47 @@ tmpd () {
 # `o` with no arguments opens the current directory, otherwise opens the given location
 o () {
     if [ $# -eq 0 ]; then
-	xdg-open . >/dev/null 2>&1
+        xdg-open . >/dev/null 2>&1
     else
-	xdg-open "$@" > /dev/null 2>&1
+        xdg-open "$@" > /dev/null 2>&1
     fi
 }
 
 # check if uri is up
 isup () {
     if curl -s --head  --request GET "$1" | grep "HTTP.*.200" >/dev/null; then
-	echo -e "\e[1;32m$1 - is up\e[0;0m"
+        echo -e "\e[1;32m$1 - is up\e[0;0m"
     else
-	echo -e "\e[1;31m$1 - is down\e[0;0m"
+        echo -e "\e[1;31m$1 - is down\e[0;0m"
     fi
 }
 
 # Automatically choose the right binary
 hgit () {
     if [ -d .hg ]; then
-	hg "$@"
+        hg "$@"
     else
-	git "$@"
+        git "$@"
     fi
 }
 
 # Patch persistence volume - remove finalizers
 kp () {
     kubectl patch pv $1 -p '{"metadata":{"finalizers":null}}'
+}
+
+parse_changed () {
+    changed=`expr $(git status --porcelain 2>/dev/null | wc -l)`
+    if [ ${changed} -gt 0 ]; then
+	echo "${FG_BOLD_RED}*${FG_BOLD_CYAN}"
+    fi
+}
+
+branch_name () {
+    branch=`git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ "${branch}" != "" ]; then
+	echo " ${FG_BOLD_CYAN}(⎇  $(parse_changed)${branch})${COLOR_OFF}"
+    fi
 }
 
 # Define prompt
@@ -113,15 +127,13 @@ ds_prompt () {
     fi
 
     PS1='\[\e]0;\u@\H:\w\a\]' # Set terminal title
-
     PS1+="${FG_BLUE}[${EXIT_STATUS}${FG_BLUE}]${COLOR_OFF}"
-
     PS1+="${FG_PURPLE}[\t]${COLOR_OFF}" # Show time
 
     if [[ ${EUID} == 0 ]] ; then
         PS1+="{${FG_BOLD_RED}\u@\H${COLOR_OFF}}─> ${FG_YELLOW}\w${COLOR_OFF} #"
     else
-        PS1+="{${FG_BOLD_GREEN}\u@\H${COLOR_OFF}}─> ${FG_YELLOW}\w${COLOR_OFF} $"
+        PS1+="{${FG_BOLD_GREEN}\u@\H${COLOR_OFF}}─> ${FG_YELLOW}\w${COLOR_OFF}$(branch_name) $"
     fi
 
     history -a
