@@ -26,7 +26,7 @@ arch_based:
 
 rhel_based:
 	echo "Installing packages for rhel based OS... "
-	sudo yum install mc htop tmux
+	sudo yum install mc htop tmux fzf
 
 enabled:
 	echo "Enabling profile..."
