@@ -62,6 +62,7 @@ manjaro_aliases() {
     alias mp='mcedit PKGBUILD'
     alias r='rg . | fzf'
     alias p='fzf --preview "bat --color=always {}"'
+    alias gl='tv git-log'
 }
 
 std_aliases() {
