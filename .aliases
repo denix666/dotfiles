@@ -63,6 +63,7 @@ manjaro_aliases() {
     alias r='rg . | fzf'
     alias p='fzf --preview "bat --color=always {}"'
     alias gl='tv git-log'
+    alias mc='mc 2>/dev/null'
 }
 
 std_aliases() {
