@@ -3,24 +3,11 @@
 # Define symbols
 SYMBOL_OK='✔'
 SYMBOL_ERROR='✘'
-SYMBOL_AWS=''
-SYMBOL_BG_JOBS=''
-SYMBOL_GIT_AHEAD=''
-SYMBOL_GIT_BEHIND=''
-SYMBOL_GIT_BITBUCKET=''
 SYMBOL_BRANCH1=''
 SYMBOL_BRANCH2='⎇ '
-SYMBOL_GIT_GITHUB=''
-SYMBOL_GIT_GITLAB=''
-SYMBOL_GIT_MODIFIED=''
-SYMBOL_NEWLINE=''
-SYMBOL_NEWLINE_ROOT=''
-SYMBOL_READ_ONLY=''
+SYMBOL_NEWLINE='$'
+SYMBOL_NEWLINE_ROOT='#'
 SYMBOL_SEGMENT_SEPARATOR=''
-SYMBOL_SSH=''
-SYMBOL_VENV=''
-SYMBOL_WORKING_DIR_FOLDER=''
-SYMBOL_WORKING_DIR_HOME=''
 SYMBOL_WORKING_DIR_SEPARATOR='-> '
 
 # Define colors
@@ -133,7 +120,7 @@ parse_changed () {
 branch_name () {
     branch=`git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ "${branch}" != "" ]; then
-	echo " ${FG_BOLD_CYAN}(⎇  $(parse_changed)${branch})${COLOR_OFF}"
+	echo " ${FG_BOLD_CYAN}(${SYMBOL_BRANCH2} $(parse_changed)${branch})${COLOR_OFF}"
     fi
 }
 
@@ -150,9 +137,9 @@ ds_prompt () {
     PS1+="${FG_PURPLE}[\t]${COLOR_OFF}" # Show time
 
     if [[ ${EUID} == 0 ]] ; then
-        PS1+="{${FG_BOLD_RED}\u@\H${COLOR_OFF}}─> ${FG_YELLOW}\w${COLOR_OFF} #"
+        PS1+="{${FG_BOLD_RED}\u@\H${COLOR_OFF}}${SYMBOL_WORKING_DIR_SEPARATOR}${FG_YELLOW}\w${COLOR_OFF} ${SYMBOL_NEWLINE_ROOT}"
     else
-        PS1+="{${FG_BOLD_GREEN}\u@\H${COLOR_OFF}}─> ${FG_YELLOW}\w${COLOR_OFF}$(branch_name) $"
+        PS1+="{${FG_BOLD_GREEN}\u@\H${COLOR_OFF}}${SYMBOL_WORKING_DIR_SEPARATOR}${FG_YELLOW}\w${COLOR_OFF}$(branch_name) ${SYMBOL_NEWLINE}"
     fi
 
     history -a
