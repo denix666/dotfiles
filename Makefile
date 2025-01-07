@@ -22,7 +22,7 @@ centos: rhel_based
 
 arch_based:
 	echo "Installing packages for arch based OS... "
-	sudo pacman -S uutils-coreutils lsd ripgrep bat btop mc tmux fzf television
+	sudo pacman -S uutils-coreutils lsd ripgrep bat btop mc tmux fzf television gitui
 
 rhel_based:
 	echo "Installing packages for rhel based OS... "
