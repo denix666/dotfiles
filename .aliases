@@ -65,6 +65,7 @@ manjaro_aliases() {
     alias gl='tv git-log'
     alias mc='mc 2>/dev/null'
     alias gu='gitui'
+    alias ga='git add .'
 }
 
 std_aliases() {
