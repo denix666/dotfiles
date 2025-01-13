@@ -1,6 +1,6 @@
 [%General]
-author=Vince Liuice
-comment=A dark theme with translucency similar to the style of macOS Mojave
+author=Denis Salmanovich
+comment=Denix kvantum theme
 x11drag=all
 alt_mnemonic=true
 left_tabs=false

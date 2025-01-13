@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=denix-theme
+Comment=Denix theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=denix-theme
+MetacityTheme=denix-theme
+IconTheme=denix-theme
+CursorTheme=denix-theme
+ButtonLayout=close,minimize,maximize
