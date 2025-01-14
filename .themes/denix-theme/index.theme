@@ -9,4 +9,5 @@ GtkTheme=denix-theme
 MetacityTheme=denix-theme
 IconTheme=denix-theme
 CursorTheme=denix-theme
+CursorSize=24
 ButtonLayout=close,minimize,maximize
