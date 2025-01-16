@@ -1,18 +1,6 @@
 {
-  "language_models": {
-    "open_ai": {}
-  },
   "use_autoclose": false,
   "vim_mode": false,
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
-    "default_open_ai_model": "gpt-3.5-turbo",
-    "version": "2",
-    "provider": null
-  },
   "language": {
     "java": {
       "show_inline_completions": false,
@@ -22,12 +10,12 @@
   "theme": "Denix Theme",
   "ui_font_size": 16,
   "buffer_font_size": 14,
-  "buffer_font_family": "Fira Code",
+  "buffer_font_family": "Hack Nerd Font",
   "buffer_font_features": {
     "calt": false,
     "cv01": 7
   },
-  "soft_wrap": "editor_width",
+  //"soft_wrap": "editor_width",
   "remove_trailing_whitespace_on_save": true,
   "current_line_highlight": "all",
   "ensure_final_newline_on_save": true,
@@ -37,7 +25,7 @@
   "auto_update": false,
   "autosave": "on_focus_change",
   "terminal": {
-    "font_family": "Fira Code",
+    "font_family": "Hack Nerd Font Mono",
     "dock": "bottom",
     "blinking": "on"
   },
@@ -49,7 +37,7 @@
     "git_diff": true,
     "search_results": true,
     "selected_symbol": true,
-    "diagnostics": true
+    "diagnostics": "all"
   },
   "tabs": {
     "close_position": "right",
