@@ -9,6 +9,7 @@ export GDK_DPI_SCALE=1
 
 export HISTCONTROL=ignoreboth
 export HISTSIZE=8000
+export HISTIGNORE="ls:mc:ga:hp:cd:tmux:p:gu:gl:r:ll:exit:pwd:clear:[ \t]*"
 
 export EDITOR=mcedit
 
