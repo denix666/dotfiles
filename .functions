@@ -11,12 +11,24 @@ SYMBOL_SEGMENT_SEPARATOR=''
 SYMBOL_WORKING_DIR_SEPARATOR='-> '
 
 # Define colors
+BG_GRAY='\[\e[48;5;238m\]'
+BG_BLUE='\[\e[48;5;017m\]'
+BG_BROWN='\[\e[48;5;237m\]'
+BG_CYAN='\[\e[48;5;031m\]'
+BG_SALAD='\[\e[48;5;078m\]'
+
 FG_RED='\[\e[38;5;196m\]'
-FG_GREEN='\[\e[38;5;118m\]'
+FG_GREEN='\[\e[38;5;46m\]'
 FG_YELLOW='\[\e[38;5;226m\]'
-FG_PURPLE='\[\e[38;5;165m\]'
+FG_CYAN='\[\e[38;5;031m\]'
 FG_BLUE='\[\e[38;5;033m\]'
+FG_DARKBLUE='\[\e[38;5;017m\]'
 FG_WHITE='\[\e[38;5;015m\]'
+FG_BLACK='\[\e[30m\]'
+FG_PURPLE='\[\e[38;5;163m\]'
+FG_GRAY='\[\e[38;5;238m\]'
+FG_BROWN='\[\e[38;5;237m\]'
+FG_SALAD='\[\e[38;5;078m\]'
 
 FG_BOLD_RED='\[\e[1;31m\]'
 FG_BOLD_GREEN='\[\e[1;32m\]'
@@ -124,7 +136,7 @@ branch_name () {
     fi
 }
 
-# Define prompt
+# Simple prompt
 ds_prompt () {
     if [ $? -eq 0 ]; then
         EXIT_STATUS="${FG_BOLD_GREEN}${SYMBOL_OK}${COLOR_OFF}"
@@ -133,13 +145,40 @@ ds_prompt () {
     fi
 
     PS1='\[\e]0;\u@\H:\w\a\]' # Set terminal title
-    PS1+="${FG_BLUE}[${EXIT_STATUS}${FG_BLUE}]${COLOR_OFF}"
-    PS1+="${FG_PURPLE}[\t]${COLOR_OFF}" # Show time
+    PS1+="${FG_BLUE}${EXIT_STATUS} ${FG_BLUE}${COLOR_OFF}"
+    PS1+="${FG_PURPLE}\t ${COLOR_OFF}" # Show time
 
     if [[ ${EUID} == 0 ]] ; then
-        PS1+="{${FG_BOLD_RED}\u@\H${COLOR_OFF}}${SYMBOL_WORKING_DIR_SEPARATOR}${FG_YELLOW}\w${COLOR_OFF} ${SYMBOL_NEWLINE_ROOT}"
+        PS1+="${FG_BOLD_RED}\u@\H ${COLOR_OFF}${FG_YELLOW}\w${COLOR_OFF} ${SYMBOL_NEWLINE_ROOT}"
     else
-        PS1+="{${FG_BOLD_GREEN}\u@\H${COLOR_OFF}}${SYMBOL_WORKING_DIR_SEPARATOR}${FG_YELLOW}\w${COLOR_OFF}$(branch_name) ${SYMBOL_NEWLINE}"
+        PS1+="${FG_BOLD_GREEN}\u@\H ${COLOR_OFF}${FG_YELLOW}\w${COLOR_OFF}$(branch_name) ${SYMBOL_NEWLINE}"
+    fi
+
+    history -a
+    history -r
+}
+
+# Color prompt
+ds_color_prompt () {
+    if [ $? -eq 0 ]; then
+        EXIT_STATUS="${FG_BOLD_GREEN}${BG_GRAY}${SYMBOL_OK}${FG_GRAY}${BG_BLUE}${SYMBOL_SEGMENT_SEPARATOR}"
+    else
+        EXIT_STATUS="${FG_BOLD_RED}${BG_GRAY}${SYMBOL_ERROR}${FG_GRAY}${BG_BLUE}${SYMBOL_SEGMENT_SEPARATOR}"
+    fi
+
+    TIME="${FG_PURPLE}\t${FG_DARKBLUE}${BG_GRAY}${SYMBOL_SEGMENT_SEPARATOR}"
+    CUR_DIR="${FG_YELLOW}\w${COLOR_OFF}"
+
+    PS1='\[\e]0;\u@\H:\w\a\]' # Set terminal title
+    PS1+="${EXIT_STATUS}"
+    PS1+="${TIME}" # Show time
+
+    if [[ ${EUID} == 0 ]] ; then
+        PS1+="${FG_RED}\u@\H${COLOR_OFF}${FG_GRAY}${SYMBOL_SEGMENT_SEPARATOR}${COLOR_OFF}"
+        PS1+="${CUR_DIR} ${SYMBOL_NEWLINE_ROOT}"
+    else
+        PS1+="${FG_GREEN}\u@\H${COLOR_OFF}${FG_GRAY}${SYMBOL_SEGMENT_SEPARATOR}${COLOR_OFF}"
+        PS1+="${CUR_DIR}$(branch_name) ${SYMBOL_NEWLINE}"
     fi
 
     history -a

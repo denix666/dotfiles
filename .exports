@@ -13,7 +13,11 @@ export HISTIGNORE="ls:mc:ga:gp:df:top:hp:cd:tmux:p:gu:o:gl:r:ll:exit:pwd:clear:[
 
 export EDITOR=mcedit
 
-export PROMPT_COMMAND=ds_prompt
+if ! [ "${MC_SID}" = "" ]; then
+    export PROMPT_COMMAND=ds_prompt
+else
+    export PROMPT_COMMAND=ds_color_prompt
+fi
 
 export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
