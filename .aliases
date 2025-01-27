@@ -41,6 +41,7 @@ common_aliases() {
     alias pj='ps -ef | grep java'
     alias pn='ping -c4 8.8.8.8'
     alias hp='hg pull && hg up'
+    alias cls='clear'
     # Journal
     alias sdr='systemctl daemon-reload'
     alias jctl='journalctl -p 3 -e'
