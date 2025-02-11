@@ -3,7 +3,7 @@
   "vim_mode": false,
   "language": {
     "java": {
-      "show_inline_completions": false,
+      "show_edit_predictions": false,
       "show_completions_on_input": false
     }
   },
