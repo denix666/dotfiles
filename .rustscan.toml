@@ -1,0 +1,4 @@
+greppable = false
+accessible = true
+ulimit = 8000
+batch_size = 1000
