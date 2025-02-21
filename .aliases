@@ -67,6 +67,7 @@ manjaro_aliases() {
     alias mc='mc 2>/dev/null'
     alias gu='gitui'
     alias ga='git add .'
+    alias lg='lazygit'
 }
 
 std_aliases() {

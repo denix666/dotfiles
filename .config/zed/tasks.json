@@ -3,5 +3,15 @@
     "label": "cargo build --release",
     "command": "cargo build --release",
     "reveal": "always"
+  },
+  {
+    "label": "Lazygit",
+    "command": "lazygit",
+    "args": [],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal_target": "center",
+    "reveal": "always"
   }
 ]

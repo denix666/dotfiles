@@ -1,5 +1,27 @@
-{
+{ "icon_theme": "Zed (Default)",
+  "assistant": {
+    "default_model": {
+      "provider":"zed.dev",
+      "model":"claude-3-5-sonnet-latest"
+    },
+    "version":"2"
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "available_models": [
+        {
+          "name": "deepseek-r1:32b",
+          "display_name": "deepseek",
+          "max_tokens": 128000
+        }
+      ]
+    },
+    "version": "1"
+  },
   "use_autoclose": false,
+  "restore_on_startup": "last_workspace",
+  "unnecessary_code_fade": 0.5,
   "vim_mode": false,
   "language": {
     "java": {
@@ -19,7 +41,6 @@
   "remove_trailing_whitespace_on_save": true,
   "current_line_highlight": "all",
   "ensure_final_newline_on_save": true,
-
   "format_on_save": "off",
   "wrap_guides": [0],
   "auto_update": false,
@@ -56,11 +77,17 @@
     "enable_preview_from_code_navigation": true
   },
   "telemetry": {
-    "diagnostics": true,
-    "metrics": true
+    "diagnostics": false,
+    "metrics": false
   },
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50
   },
   "file_types": {
     "ini": ["cfg","conf", "service"],
@@ -68,5 +95,31 @@
     "Elisp": ["yuck"],
     "Plain Text": ["txt"],
     "Git Ignore": [".hgignore"]
-  }
+  },
+  "formatter": [
+    { "language_server": { "name": "rust-analyzer" } },
+    {
+      "external": {
+        "command": "sed",
+        "arguments": ["-e", "s/ *$//"]
+      }
+    }
+  ],
+  "auto_install_extensions": {
+    "git-firefly": true
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.vscode",
+    "**/.jj",
+    "**/CVS",
+    "**/venv",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/__pycache__",
+    "**/.settings",
+    "**/.idea"
+  ]
 }

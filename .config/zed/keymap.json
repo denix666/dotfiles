@@ -1,0 +1,17 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle",
+      "alt alt": ["task::Spawn", {
+        "task_name": "Lazygit" }
+      ]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-o": "outline::Toggle"
+    }
+  }
+]
