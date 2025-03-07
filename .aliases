@@ -68,6 +68,7 @@ manjaro_aliases() {
     alias gu='gitui'
     alias ga='git add .'
     alias lg='lazygit'
+    alias rs='rustscan -a'
 }
 
 std_aliases() {

@@ -65,16 +65,24 @@ export HISTSIZE=5000
 export EDITOR=mcedit
 
 # Aliases
-alias ll='ls -la --color=auto'
 alias lh='ls -lah --color=auto'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto'
+alias lt='tree'
+alias cp='cp -i'
+alias mv='mv -i'
+alias free='free -m'
+alias df='df -h'
 alias grep='grep --color=auto'
 alias pn='ping -c4 8.8.8.8'
 alias tf='tail -f'
-alias df='df -h'
 alias di='docker images'
 alias ds='docker ps -a'
 alias dr='docker rm --force `docker ps -qa`'
 alias dri='docker rmi -f $(docker images -a -q)'
+alias dl='docker logs'
+alias dstop='docker stop'
+alias drm='docker rm'
 alias dclean="docker ps -a | grep Exited | awk '{print $1}' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '{print $3}' | xargs -r docker rmi >/dev/null 2>&1"
 alias ju='journalctl -u'
 alias jf='journalctl -f'
@@ -86,11 +94,6 @@ alias sdr='systemctl daemon-reload'
 alias sf='systemctl --failed'
 alias pj='ps -ef | grep java'
 alias ls='ls --color=auto'
-alias dl='docker logs'
-alias dstop='docker stop'
-alias drm='docker rm'
-alias dr='docker rm --force `docker ps -qa`'
-alias dclean="docker ps -a | grep Exited | awk '{print $1}' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '{print $3}' | xargs -r docker rmi >/dev/null 2>&1"
 alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias s="sudo bash --rcfile $bashrc_file"
