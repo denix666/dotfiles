@@ -5,6 +5,9 @@
       "shift shift": "file_finder::Toggle",
       "alt alt": ["task::Spawn", {
         "task_name": "Lazygit" }
+      ],
+      "ctrl ctrl": ["task::Spawn", {
+        "task_name": "Echo" }
       ]
     }
   },

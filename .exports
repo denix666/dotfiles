@@ -9,11 +9,11 @@ export GDK_DPI_SCALE=1
 
 export HISTCONTROL=ignoreboth
 export HISTSIZE=8000
-export HISTIGNORE="ls:mc:ga:gp:df:top:hp:cd:tmux:p:gu:o:gl:r:ll:exit:pwd:clear:[ \t]*"
+export HISTIGNORE="ls:mc:ga:gp:df:du:top:hp:cd:tmux:p:gu:o:gl:r:ll:exit:pwd:clear"
 
 export EDITOR=mcedit
 
-if ! [ "${MC_SID}" = "" ]; then
+if ! [ "${MC_SID}" = "" ] || ! [ ${TERM} = "xterm-256color" ]; then
     export PROMPT_COMMAND=ds_prompt
 else
     export PROMPT_COMMAND=ds_color_prompt
