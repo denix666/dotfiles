@@ -37,6 +37,7 @@ common_aliases() {
     alias egrep='egrep --colour=auto'
     alias fgrep='fgrep --colour=auto'
     alias tf='tail -f'
+    alias dsize='du -skh * | sort -n'
     alias more='less'
     alias pj='ps -ef | grep java'
     alias pn='ping -c4 8.8.8.8'
