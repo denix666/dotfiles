@@ -43,6 +43,7 @@ common_aliases() {
     alias pn='ping -c4 8.8.8.8'
     alias hp='hg pull && hg up'
     alias cls='clear'
+    alias whatismyip='curl icanhazip.com'
     # Journal
     alias sdr='systemctl daemon-reload'
     alias jctl='journalctl -p 3 -e'
