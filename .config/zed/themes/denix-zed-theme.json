@@ -168,12 +168,12 @@
           },
           "comment": {
             "color": "#797979",
-            "font_style": null,
+            "font_style": "italic",
             "font_weight": null
           },
           "comment.doc": {
             "color": "#797979",
-            "font_style": null,
+            "font_style": "italic",
             "font_weight": null
           },
           "constant": {

@@ -55,7 +55,7 @@ manjaro_aliases() {
     alias cp='uu-cp -ig'
     alias df='uu-df -h'
     alias du='uu-du'
-    alias free='uu-free -m'
+    alias free='free -m'
     alias grep='rg -i'
     alias mv='uu-mv -g'
     alias ls='lsd -N --color=always --hyperlink=auto'
