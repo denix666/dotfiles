@@ -1,34 +1,16 @@
-{ "icon_theme": "Zed (Default)",
-  "assistant": {
-    "default_model": {
-      "provider":"zed.dev",
-      "model":"claude-3-5-sonnet-latest"
-    },
-    "version":"2"
+{
+  "auto_indent": false,
+  "auto_indent_on_paste": false,
+  "icon_theme": "Zed (Default)",
+  "minimap": {
+    "show": "always"
   },
-  "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434",
-      "available_models": [
-        {
-          "name": "deepseek-r1:32b",
-          "display_name": "deepseek",
-          "max_tokens": 128000
-        }
-      ]
-    },
-    "version": "1"
-  },
+  "agent_ui_font_size": 16.0,
   "use_autoclose": false,
   "restore_on_startup": "last_workspace",
+  "lsp_document_colors": "background",
   "unnecessary_code_fade": 0.5,
   "vim_mode": false,
-  "language": {
-    "java": {
-      "show_edit_predictions": false,
-      "show_completions_on_input": false
-    }
-  },
   "theme": "Denix Theme",
   "ui_font_size": 16,
   "buffer_font_size": 14,
@@ -67,6 +49,7 @@
     "git_status": true
   },
   "toolbar": {
+    "code_actions": true,
     "breadcrumbs": true,
     "quick_actions": true
   },
@@ -74,7 +57,7 @@
   "preview_tabs": {
     "enabled": true,
     "enable_preview_from_file_finder": true,
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true
   },
   "telemetry": {
     "diagnostics": false,
@@ -89,12 +72,18 @@
     "edit_debounce_ms": 700,
     "scroll_debounce_ms": 50
   },
+  "title_bar": {
+    "show_onboarding_banner": false
+  },
   "file_types": {
-    "ini": ["cfg","conf", "service"],
+    "ini": ["cfg", "conf", "service"],
     "Shell Script": ["env"],
     "Elisp": ["yuck"],
     "Plain Text": ["txt"],
-    "Git Ignore": [".hgignore"]
+    "Git Ignore": [".hgignore", ".helmignore"],
+    "Jinja2": ["jinja", "j2"],
+    "YAML": ["alloy"],
+    "Helm": ["**/templates/*.yaml", "**/templates/*.tpl"]
   },
   "formatter": [
     { "language_server": { "name": "rust-analyzer" } },
