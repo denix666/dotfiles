@@ -29,12 +29,20 @@ This will only copy all dotfiles from this repo to your home folder.
 > [!IMPORTANT]
 > To have all aliases working correct on arch based distro, you should install next packages as dependencies:
 ```
-uutils-coreutils - https://uutils.github.io/
+uutils-coreutils - https://uutils.github.io
 ripgrep - https://github.com/BurntSushi/ripgrep
 bat - https://github.com/sharkdp/bat
 btop - https://github.com/aristocratos/btop
 lsd - https://github.com/lsd-rs/lsd
 fzf - https://github.com/junegunn/fzf
+
+Optional:
+docker - https://www.docker.com
+kubectl - https://kubernetes.io/docs/reference/kubectl
+git - https://git-scm.com
+ansible - https://docs.ansible.com
+gitui - https://github.com/gitui-org/gitui
+lazygit - https://github.com/jesseduffield/lazygit
 ```
 To install only the packages:
 ```bash
