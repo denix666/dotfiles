@@ -3,11 +3,12 @@
 ###################################################################################
 # If you are on arch based distro - make sure you are installed the next packages:
 #
-# 1 - uutils-coreutils https://uutils.github.io/
+# 1 - uutils-coreutils https://uutils.github.io
 # 2 - ripgrep https://github.com/BurntSushi/ripgrep
 # 3 - bat https://github.com/sharkdp/bat
 # 4 - btop https://github.com/aristocratos/btop
 # 5 - lsd https://github.com/lsd-rs/lsd
+# 6 - kubectl https://kubernetes.io/docs/reference/kubectl
 ###################################################################################
 
 OS=`cat /etc/os-release 2>/dev/null | grep '^ID=' | tr -d '"' | awk -F'=' '{print $2}'`
@@ -24,6 +25,12 @@ common_aliases() {
     alias drm='docker rm'
     alias ds='docker ps -a'
     alias dstop='docker stop'
+    # K8s
+    alias k='kubectl'
+    alias ka='kubectl apply'
+    alias kp='kubectl patch'
+    alias kd='kubectl delete'
+    alias kg='kubectl get'
     # Git
     alias gp='git pull'
     alias gpreb='git pull --rebase'
