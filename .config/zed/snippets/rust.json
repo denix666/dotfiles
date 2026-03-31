@@ -1,0 +1,115 @@
+{
+  "Struct implementation": {
+    "prefix": "impl",
+    "body": [
+      "impl ImplName {$1",
+      "    pub async fn new() -> Self {$2",
+      "        Self {$3",
+      "            $4",
+      "        }$3",
+      "    }$2",
+      "}$1",
+    ]
+  },
+  "Include bytes": {
+    "prefix": "include_bytes",
+    "body": [
+      "Some(Texture2D::from_file_with_format(include_bytes!(\"../assets/some.png\"), None));",
+    ]
+  },
+  "Eframe template": {
+    "prefix": "eframe",
+    "body": [
+      "use eframe::*;",
+      "",
+      "fn main() {",
+      "    let mut title = String::from(\"App v\");",
+      "    title.push_str(env!(\"CARGO_PKG_VERSION\"));",
+      "    let options = eframe::NativeOptions {",
+      "        viewport: egui::ViewportBuilder::default()",
+      "            .with_inner_size([300.0, 300.0]).with_maximize_button(false),",
+      "        ..Default::default()",
+      "    };",
+      "",
+      "    eframe::run_simple_native(&title, options, move |ctx, _frame| {",
+      "        egui::CentralPanel::default().show(&ctx, |ui| {",
+      "            if ui.button(\"Button\").clicked() {",
+      "                println!(\"Button\");",
+      "            }",
+      "        });",
+      "    }).unwrap();",
+      "}"
+    ]
+  },
+  "Eframe with icon template": {
+    "prefix": "eframe_with_icon",
+    "body": [
+      "use eframe::*;",
+      "",
+      "//add to toml",
+      "//eframe = \"0.32\"",
+      "//image = \"0.25\"",
+      "",
+      "const ICON_BYTES: &[u8] = include_bytes!(\"../assets/icon.png\");",
+      "",
+      "pub fn load_embedded_icon() -> Result<crate::egui::IconData, String> {",
+      "    let img = image::load_from_memory(ICON_BYTES).map_err(|e| e.to_string())?.into_rgba8();",
+      "    let (width, height) = img.dimensions();",
+      "    let rgba = img.into_raw();",
+      "    Ok(crate::egui::IconData { rgba, width, height })",
+      "}",
+      "",
+      "fn main() {",
+      "    let mut title = String::from(\"App v\");",
+      "    title.push_str(env!(\"CARGO_PKG_VERSION\"));",
+      "    let mut options = eframe::NativeOptions {",
+      "        viewport: egui::ViewportBuilder::default()",
+      "            .with_inner_size([400.0, 600.0])",
+      "            .with_maximized(true),",
+      "        ..Default::default()",
+      "    };",
+      "",
+      "    if let Ok(icon) = load_embedded_icon() {",
+      "        options.viewport = options.viewport.with_icon(icon);",
+      "    }",
+      "",
+      "    eframe::run_simple_native(&title, options, move |ctx, _frame| {",
+      "        egui::CentralPanel::default().show(&ctx, |ui| {",
+      "            if ui.button(\"Button\").clicked() {",
+      "                println!(\"Button\");",
+      "            }",
+      "        });",
+      "    }).unwrap();",
+      "}"
+    ]
+  },
+  "Macroquad main function": {
+    "prefix": "macroquad",
+    "body": [
+      "#[macroquad::main(\"My App\")]",
+      "async fn main() {",
+      "    loop {",
+      "        clear_background(BLACK);",
+      "        next_frame().await;",
+      "    }",
+      "}"
+    ]
+  },
+  "Conf for macroquad window": {
+    "prefix": "conf",
+    "body": [
+      "fn conf() -> Conf {",
+      "    let title = String::from(\"My App\");",
+      "    Conf {",
+      "        window_title: title.to_owned(),",
+      "        fullscreen: false,",
+      "        sample_count: 16,",
+      "        window_width: SCREEN_WIDTH,",
+      "        window_height: SCREEN_HEIGHT,",
+      "        window_resizable: false,",
+      "        ..Default::default()",
+      "    }",
+      "}"
+    ]
+  },
+}

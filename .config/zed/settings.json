@@ -1,5 +1,5 @@
 {
-  "auto_indent": false,
+  "auto_indent": true,
   "auto_indent_on_paste": false,
   "icon_theme": "Zed (Default)",
   "minimap": {
@@ -76,7 +76,7 @@
     "show_onboarding_banner": false
   },
   "file_types": {
-    "ini": ["cfg", "conf", "service"],
+    "ini": ["cfg", "conf", "service", "desktop"],
     "Shell Script": ["env"],
     "Elisp": ["yuck"],
     "Plain Text": ["txt"],

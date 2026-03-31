@@ -1,0 +1,125 @@
+{
+  "Post condition": {
+    "prefix": "post",
+    "body": [
+      "post {${1}",
+      "    // always / unstable / changed / success / failure${2}",
+      "    always {${2}",
+      "        script {${3}",
+      "            currentBuild.description = \"release build\"${4}",
+      "        }${3}",
+      "    }${2}",
+      "}${1}",
+    ]
+  },
+  "Options": {
+    "prefix": "options",
+    "body": [
+      "options {${1}",
+      "    buildDiscarder(logRotator(numToKeepStr: '21', artifactNumToKeepStr: '7'))${2}",
+      "    timestamps()${2}",
+      "    disableConcurrentBuilds()${2}",
+      "    timeout(time: 120, unit: 'MINUTES')${2}",
+      "}${1}",
+    ]
+  },
+  "Parameters": {
+    "prefix": "parameters",
+    "body": [
+      "parameters {${1}",
+      "    string(name: 'str1', defaultValue: 'XX.XX', description: '')${2}",
+      "    choice(name: 'choice1', choices: ['c1', 'c2', 'c3'], description: '')${2}",
+      "    booleanParam(name: 'bool1', defaultValue: true, description: '')${2}",
+      "}${1}",
+    ]
+  },
+  "Pipeline": {
+    "prefix": "pipeline",
+    "body": [
+      "pipeline {${1}",
+      "    agent {${2}",
+      "        node {${3}",
+      "            label \"node_label\"${4}",
+      "        }${3}",
+      "    }${2}",
+      "}${1}",
+    ]
+  },
+  "Environment": {
+    "prefix": "environment",
+    "body": [
+      "environment {${1}",
+      "    ENVNAME = credentials('secret_id')${2}",
+      "}${1}",
+    ]
+  },
+  "Stages": {
+    "prefix": "stages",
+    "body": [
+      "stages {${1}",
+      "    ${2}",
+      "}${1}",
+    ]
+  },
+  "Archive Artifacts": {
+    "prefix": "archive",
+    "body": [
+      "archiveArtifacts artifacts: '''**/*.json'''"
+    ]
+  },
+  "Dir": {
+    "prefix": "dir",
+    "body": [
+      "dir(\"\\${CUSTOM_WORKSPACE}\") {",
+    ]
+  },
+  "Steps": {
+    "prefix": "steps",
+    "body": [
+      "steps {",
+      "    script {",
+      "",
+      "    }",
+      "}",
+    ]
+  },
+  "Job prefix": {
+    "prefix": "job_prefix",
+    "body": [
+      "job_prefix = sh (",
+      "    script: '''",
+      "        #!/bin/bash",
+      "        set +x",
+      "        echo \\$JOB_NAME | awk -F'_' '{print \\$1}'",
+      "    ''',",
+      "returnStdout: true).trim()",
+    ]
+  },
+  "Custom workspace": {
+    "prefix": "custom_workspace",
+    "body": [
+      "jnk_workspace = sh (",
+      "    script: '''dirname \\${PWD}''',",
+      "    returnStdout: true",
+      ").trim()",
+      "env.CUSTOM_WORKSPACE = \"\\${jnk_workspace}/WS_MyJobName\"",
+    ]
+  },
+  "Stage Build": {
+    "prefix": "stage_build",
+    "body": [
+      "stage(\"Build\") {",
+      "    tools {",
+      "        jdk \"AdoptOpenJDK-11.0.12\"",
+      "    }",
+      "    steps {",
+      "        script {",
+      "            sh '''",
+      "                java -version",
+      "            '''",
+      "        }",
+      "    }",
+      "}"
+    ]
+  }
+}

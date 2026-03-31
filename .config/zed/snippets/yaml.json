@@ -1,0 +1,43 @@
+{
+  "Helm Chart": {
+    "prefix": "helm_chart_genesis_standard",
+    "body": [
+      "apiVersion: v2",
+      "name: my_helm_chart_name",
+      "version: 0.1.0",
+      "",
+      "dependencies:",
+      "  - name: deployment-template",
+      "    version: 0.1.0",
+      "    repository: \"file://../../templates/deployment-template\"",
+      "  - name: my_helm_chart_name",
+      "    version: 0.1.0",
+      "    repository: https://helm.repo.url/my_helm_chart_name/",
+    ]
+  },
+  "Ingress Value": {
+    "prefix": "ingress_value",
+    "body": [
+      "ingress:",
+      "  enabled: true",
+      "  useClusterGateway: true",
+      "  clusterNameHosts: false",
+      "  istio: true",
+      "  domain_prefix: \"\"",
+      "  domain: \"\"",
+      "  tls:",
+      "    enabled: true",
+      "    secretName: \"tls-secret\"",
+      "  annotations: {}",
+      "  hosts:",
+      "    - host: my_component_name",
+      "      oauth:",
+      "        enabled: true",
+      "      paths:",
+      "        - path: /",
+      "          pathType: prefix",
+      "          serviceName: my_component_name",
+      "          servicePort: 8080",
+    ]
+  },
+}

@@ -1,0 +1,74 @@
+{
+  "Kubernetes namespace template": {
+    "prefix": "namespace",
+    "body": [
+      "apiVersion: v1",
+      "kind: Namespace",
+      "metadata:",
+      "  name: namespace-name",
+    ]
+  },
+  "Kubernetes pod template": {
+    "prefix": "pod",
+    "body": [
+      "apiVersion: v1",
+      "kind: Pod",
+      "metadata:",
+      "  name: pod-name",
+      "  namespace: namespace-name",
+      "spec:",
+      "  containers:",
+      "    - name: pod-container",
+      "      image: nginx",
+    ]
+  },
+  "Kubernetes deployment template": {
+    "prefix": "deployment",
+    "body": [
+      "apiVersion: apps/v1",
+      "kind: Deployment",
+      "metadata:",
+      "  name: deployment-name",
+      "  namespace: namespace-name",
+      "  labels:",
+      "    app: app-name",
+      "spec:",
+      "  replicas: 3",
+      "  selector:",
+      "    matchLabels:",
+      "      app: app-name",
+      "  template:",
+      "    metadata:",
+      "      labels:",
+      "        app: app-name",
+      "    spec:",
+      "      containers:",
+      "      - name: nginx",
+      "        image: nginx",
+      "        ports:",
+      "        - containerPort: 80",
+    ]
+  },
+  "Kubernetes daemonset template": {
+    "prefix": "daemonset",
+    "body": [
+      "apiVersion: apps/v1",
+      "kind: DaemonSet",
+      "metadata:",
+      "  name: daemonset-name",
+      "  namespace: namespace-name",
+    ]
+  },
+  "Kubernetes configmap template": {
+    "prefix": "configmap",
+    "body": [
+      "apiVersion: v1",
+      "kind: ConfigMap",
+      "metadata:",
+      "  name: configmap-name",
+      "  namespace: namespace-name",
+      "data:",
+      "  key: \"value\"",
+    ]
+  }
+}
