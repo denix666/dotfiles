@@ -93,7 +93,6 @@ alias sre='systemctl restart'
 alias sdr='systemctl daemon-reload'
 alias sf='systemctl --failed'
 alias pj='ps -ef | grep java'
-alias ls='ls --color=auto'
 alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias s="sudo bash --rcfile $bashrc_file"

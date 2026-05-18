@@ -15,26 +15,43 @@ OS=`cat /etc/os-release 2>/dev/null | grep '^ID=' | tr -d '"' | awk -F'=' '{prin
 
 common_aliases() {
     # Ansible
-    alias ap='ansible-playbook'
-    alias av='ansible-vault'
+    if [ -f /usr/bin/ansible-playbook ]; then
+        alias ap='ansible-playbook'
+    fi
+    if [ -f /usr/bin/ansible-vault ]; then
+        alias av='ansible-vault'
+    fi
     # Docker
-    alias dclean='docker ps -a | grep Exited | awk '\''{print $1}'\'' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '\''{print $3}'\'' | xargs -r docker rmi >/dev/null 2>&1'
-    alias di='docker images'
-    alias dl='docker logs'
-    alias dr='docker rm --force `docker ps -qa`'
-    alias drm='docker rm'
-    alias ds='docker ps -a'
-    alias dstop='docker stop'
+    if [ -f /usr/bin/kubectl ]; then
+        alias dclean='docker ps -a | grep Exited | awk '\''{print $1}'\'' | xargs -r docker rm >/dev/null 2>&1 && docker images --no-trunc | grep none | awk '\''{print $3}'\'' | xargs -r docker rmi >/dev/null 2>&1'
+        alias di='docker images'
+        alias dl='docker logs'
+        alias dr='docker rm --force `docker ps -qa`'
+        alias drm='docker rm'
+        alias ds='docker ps -a'
+        alias dstop='docker stop'
+    fi
     # K8s
-    alias k='kubectl'
-    alias ka='kubectl apply'
-    alias kp='kubectl patch'
-    alias kd='kubectl delete'
-    alias kg='kubectl get'
+    if [ -f /usr/bin/kubectl ]; then
+        alias k='kubectl'
+        alias ka='kubectl apply'
+        alias kp='kubectl patch'
+        alias kd='kubectl delete'
+        alias kg='kubectl get'
+    fi
     # Git
-    alias gp='git pull'
-    alias gpreb='git pull --rebase'
-    alias gprec='git pull --recurse-submodules'
+    if [ -f /usr/bin/git ]; then
+        alias gp='git pull'
+        alias gpreb='git pull --rebase'
+        alias gprec='git pull --recurse-submodules'
+        alias ga='git add .'
+    fi
+    if [ -f /usr/bin/gitui ]; then
+        alias gu='gitui'
+    fi
+    if [ -f /usr/bin/lazygit ]; then
+        alias lg='lazygit'
+    fi
     # SSH/SCP
     alias scp='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
     alias ssh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
@@ -55,6 +72,10 @@ common_aliases() {
     # Journal
     alias sdr='systemctl daemon-reload'
     alias jctl='journalctl -p 3 -e'
+    # NPX
+    if [ -f /usr/bin/npx ]; then
+        alias claude='npx @anthropic-ai/claude-code'
+    fi
 }
 
 manjaro_aliases() {
@@ -75,9 +96,6 @@ manjaro_aliases() {
     alias p='fzf --preview "bat --color=always {}"'
     alias gl='tv git-log'
     alias mc='mc 2>/dev/null'
-    alias gu='gitui'
-    alias ga='git add .'
-    alias lg='lazygit'
     alias rs='rustscan -a'
 }
 

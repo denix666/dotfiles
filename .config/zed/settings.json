@@ -1,5 +1,18 @@
 {
-  "auto_indent": true,
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "auto_indent":"syntax_aware",
   "auto_indent_on_paste": false,
   "icon_theme": "Zed (Default)",
   "minimap": {

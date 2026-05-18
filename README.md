@@ -6,7 +6,7 @@ My dotfiles. They was tested on arch and rhel based distros.
 ```bash
 $ make all
 ```
-This will copy all dotfiles from this repo to your home folder, install all needed packages and include they in your .basrc file.
+This will copy all dotfiles from this repo to your home folder, install all needed packages and include they in your .bashrc file.
 
 > [!TIP]
 > You always can enable or disable that profile with next command:
