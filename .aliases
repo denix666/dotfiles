@@ -56,6 +56,7 @@ common_aliases() {
     alias whatismyip='curl icanhazip.com'
     alias tracepath='tracepath -b'
     alias claude='npx @anthropic-ai/claude-code'
+    alias copilot='gh copilot -i chat'
     # Journal
     alias sdr='systemctl daemon-reload'
     alias jctl='journalctl -p 3 -e'
