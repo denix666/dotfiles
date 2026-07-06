@@ -55,6 +55,8 @@ common_aliases() {
     alias cls='clear'
     alias whatismyip='curl icanhazip.com'
     alias tracepath='tracepath -b'
+    # AI agents
+    alias opencode='npx opencode-ai@latest'
     alias claude='npx @anthropic-ai/claude-code'
     alias copilot='gh copilot -i chat'
     # Journal

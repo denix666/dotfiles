@@ -42,13 +42,13 @@ FG_BOLD_PURPLE='\[\e[1;35m\]'
 COLOR_OFF='\[\e[0m\]'
 
 # Colorize errored execution
-command_not_found_handle () {
+command_not_found_handle() {
     echo -e "\e[1;31m$0: $1: command not found\e[0;0m"
     return 127
 }
 
 # Archive extractor
-ex () {
+ex() {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xjf "$1"                           ;;
@@ -71,7 +71,7 @@ ex () {
 }
 
 # Remote shell with custom profile
-sshb () {
+sshb() {
     local ssh="ssh -S ~/.ssh/control-socket-$(tr -cd '[:alnum:]' < /dev/urandom|head -c8)"
     $ssh -fNM -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$@"
     $ssh "$@" "cat >~/.bashrc-ssh" <~/.bashrc-ssh
@@ -79,7 +79,7 @@ sshb () {
     $ssh "$@" -O exit >/dev/null 2>&1
 }
 
-256-colors () {
+256-colors() {
     for fgbg in 38 48 ; do # Foreground / Background
 	for color in {0..255} ; do # Colors
     	    # Display the color
@@ -94,7 +94,7 @@ sshb () {
 }
 
 # Make a temporary directory and enter it
-tmpd () {
+tmpd() {
     local dir
     if [ $# -eq 0 ]; then
         dir=$(mktemp -d)
@@ -105,7 +105,7 @@ tmpd () {
 }
 
 # `o` with no arguments opens the current directory, otherwise opens the given location
-o () {
+o() {
     if [ $# -eq 0 ]; then
         xdg-open . >/dev/null 2>&1
     else
@@ -114,7 +114,7 @@ o () {
 }
 
 # check if uri is up
-isup () {
+isup() {
     if curl -s --head  --request GET "$1" | grep "HTTP.*.200" >/dev/null; then
         echo -e "\e[1;32m$1 - is up\e[0;0m"
     else
@@ -123,7 +123,7 @@ isup () {
 }
 
 # Automatically choose the right binary
-hgit () {
+hgit() {
     if [ -d .hg ]; then
         hg "$@"
     else
@@ -132,18 +132,18 @@ hgit () {
 }
 
 # Patch persistence volume - remove finalizers
-kppv () {
+kppv() {
     kubectl patch pv $1 -p '{"metadata":{"finalizers":null}}'
 }
 
-parse_changed () {
+parse_changed() {
     changed=`expr $(git status --porcelain 2>/dev/null | wc -l)`
     if [ ${changed} -gt 0 ]; then
 	echo "${FG_BOLD_RED}*${FG_BOLD_CYAN}"
     fi
 }
 
-branch_name () {
+branch_name() {
     branch=`git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ "${branch}" != "" ]; then
 	echo " ${FG_BOLD_CYAN}(${SYMBOL_BRANCH2} $(parse_changed)${branch})${COLOR_OFF}"
@@ -151,7 +151,7 @@ branch_name () {
 }
 
 # Simple prompt
-ds_prompt () {
+ds_prompt() {
     if [ $? -eq 0 ]; then
         EXIT_STATUS="${FG_BOLD_GREEN}${SYMBOL_OK}${COLOR_OFF}"
     else
@@ -173,7 +173,7 @@ ds_prompt () {
 }
 
 # Color prompt
-ds_color_prompt () {
+ds_color_prompt() {
     if [ $? -eq 0 ]; then
         EXIT_STATUS="${FG_BOLD_GREEN}${BG_GRAY}${SYMBOL_OK}${FG_GRAY}${BG_BLUE}${SYMBOL_SEGMENT_SEPARATOR}"
     else

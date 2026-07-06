@@ -31,10 +31,13 @@ shell_patterns=0
   meld %t
 
  OPEN CURRENT DIR IN ZED
-  z %d
+  zeditor %d
 
  OPEN CURRENT FILE IN ZED
-  z %f
+  zeditor %f
+
+ GIT UI
+  gitui
 
  COPY CURRENT FILE CONTENT TO CLIPBOARD
   xclip -sel c < %f

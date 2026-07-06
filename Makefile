@@ -19,6 +19,8 @@ manjaro: arch_based
 arch: arch_based
 rhel: rhel_based
 centos: rhel_based
+ubuntu: debian_based
+debian: debian_based
 
 arch_based:
 	echo "Installing packages for arch based OS... "
@@ -27,6 +29,10 @@ arch_based:
 rhel_based:
 	echo "Installing packages for rhel based OS... "
 	sudo yum install mc htop tmux fzf
+
+debian_based:
+	echo "Installing packages for debian based OS... "
+	sudo apt install lsd ripgrep bat btop mc tmux fzf gitui
 
 enabled:
 	echo "Enabling profile..."
