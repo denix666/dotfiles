@@ -32,7 +32,7 @@ rhel_based:
 
 debian_based:
 	echo "Installing packages for debian based OS... "
-	sudo apt install lsd ripgrep bat btop mc tmux fzf gitui
+	sudo apt install lsd ripgrep bat btop mc tmux fzf
 
 enabled:
 	echo "Enabling profile..."

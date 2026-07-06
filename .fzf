@@ -1,6 +1,11 @@
 #!/bin/bash
 
-eval "$(fzf --bash)"
+if fzf --bash &>/dev/null; then
+    eval "$(fzf --bash)"
+else
+    [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+    [ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
+fi
 
 _FZF_COMPLETION_SEP=$'\x01'
 
