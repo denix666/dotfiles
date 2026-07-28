@@ -1,0 +1,33 @@
+[ui]
+agent_panel_sort = "spaces"
+
+[ui.toast]
+delivery = "system"
+
+[keys]
+next_tab = "ctrl+right"
+previous_tab = "ctrl+left"
+next_workspace = "ctrl+down"
+previous_workspace = "ctrl+up"
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[theme.custom]
+accent = "#3691ff"
+panel_bg = "#20242a"
+surface0 = "#282c34"
+surface1 = "#3f4451"
+surface_dim = "#22252a"
+overlay0 = "#3d434f"
+overlay1 = "#abb0bf"
+text = "#abb2bf"
+subtext0 = "#8f939d"
+mauve = "#9f7efe"
+green = "#3fc56b"
+yellow = "#f9c859"
+red = "#fc2e51"
+blue = "#3691ff"
+teal = "#5fb9bc"
+peach = "#ff936a"

@@ -9,13 +9,13 @@ done
 # Load dircolors
 [ -f ~/.dir_colors ] && eval "$(dircolors ~/.dir_colors)"
 
-# If you want tmux to be loaded on each terminal session automatically:
+# If you want HERDR to be loaded on each terminal session automatically:
 # set next variable to "true" or "false"
 # #####################################################################
-AUTO_LOAD_TMUX=false
+AUTO_LOAD_HERDR=false
 
-if [ "${AUTO_LOAD_TMUX}" = "true" ]; then
-    if command -v tmux &> /dev/null && [ -z "${TMUX}" ]; then
-	tmux attach -t default || tmux new -s default
+if [ "${AUTO_LOAD_HERDR}" = "true" ] && command -v herdr &> /dev/null; then
+    if [[ "${HERDR_ENV:-}" != "1" ]]; then
+       herdr
     fi
 fi
