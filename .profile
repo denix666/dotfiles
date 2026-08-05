@@ -15,7 +15,7 @@ done
 AUTO_LOAD_HERDR=false
 
 if [ "${AUTO_LOAD_HERDR}" = "true" ] && command -v herdr &> /dev/null; then
-    if [[ "${HERDR_ENV:-}" != "1" ]]; then
+    if [[ "${HERDR_ENV:-}" != "1" ]] && [[ "${TERM_PROGRAM:-}" != "zed" ]]; then
        herdr
     fi
 fi
